@@ -224,14 +224,3 @@ git revert commit_id
 
 ---
 
-### Saving and Uploading
-
-1. **Save the file**:
-
-   - If you're using VS Code or similar, click **File** > **Save As** and save it as `gitLearning.md`.
-   - If you're using a simple text editor, make sure to save it with the `.md` extension.
-
-2. **Upload to GitHub**:
-   - Navigate to your GitHub repository.
-   - If the `Git` folder doesn't exist, create it.
-   - Upload the `gitLearning.md` file into the `Git` folder, or if you're using the Git command line, commit and push it.
