@@ -1,206 +1,200 @@
-Git Learning Documentation
-1. Basics Setup
-Set Username:
-bash
-Copy code
-git config user.name "[your name]"
-Set Email:
-bash
-Copy code
-git config user.email "[your email]"
-Initialize Repository:
-bash
-Copy code
-git init
-2. Cloning a Repository
-Clone the main branch:
-bash
-Copy code
-git clone <repository_url>
-Clone a specific branch:
-bash
-Copy code
-git clone --branch <branch_name> <repository_url>
-Clone into the current directory:
-bash
-Copy code
-git clone <repository_url> .
-Clone into a specific directory:
-bash
-Copy code
-git clone <repository_url> <directory_name>
-3. Remote Commands
-View remote name(s):
-bash
-Copy code
-git remote
-View remote URL(s):
-bash
-Copy code
-git remote -v
-Rename a remote:
-bash
-Copy code
-git remote rename <old_name> <new_name>
-Add a remote:
-bash
-Copy code
-git remote add <remote_name> <repository_url>
-Remove a remote:
-bash
-Copy code
-git remote remove <remote_name>
-4. Staging Files
-Add all files:
-bash
-Copy code
-git add .
-Add specific file/directory:
-bash
-Copy code
-git add <file_name> <directory_name>
-Remove a file/directory:
-bash
-Copy code
-git rm <file_name> <directory_name>
-5. Committing Changes
-Commit with a message:
-bash
-Copy code
-git commit -m "[commit message]"
-Track and save all changes with a message:
-bash
-Copy code
-git commit -am "[commit message]"
-Edit the previous commit message:
-bash
-Copy code
-git commit --amend -m "[new commit message]"
-6. Stash
-Scenario:
-Use git stash to save uncommitted changes temporarily, even when switching branches.
+# Git Learning Notes
 
-Stash changes:
-bash
-Copy code
+## Table of Contents
+1. [Basic Setup](#basic-setup)
+2. [Cloning a Repository](#cloning-a-repository)
+3. [Using Remote](#using-remote)
+4. [Adding Files](#adding-files)
+5. [Committing Changes](#committing-changes)
+6. [Stashing Changes](#stashing-changes)
+7. [Working with Branches](#working-with-branches)
+8. [Pulling Changes](#pulling-changes)
+9. [Logging and Reviewing Work](#logging-and-reviewing-work)
+10. [Reversing Changes](#reversing-changes)
+
+---
+
+# 1. Basic Setup
+```bash
+# Set username
+git config user.name [your name]
+
+# Set email
+git config user.email [your email]
+
+# Initialize a repository
+git init
+# Clone the main branch
+git clone repository_url
+
+# Clone a specific branch
+git clone --branch branch_name repository_url
+
+# Clone into the current directory
+git clone repository_url .
+
+# Clone into a specific directory
+git clone repository_url directory_name
+** 3. Using Remote**
+# View remote name
+git remote
+
+# View remote URLs
+git remote -v
+
+# Rename remote
+git remote rename old_name new_name
+
+# Add a new remote
+git remote add origin repo_url
+
+# Remove a remote
+git remote rm remote_name
+
+
+**Add all files**
+git add .
+
+# Add specific file or directory
+git add file_name
+git add dir_name
+
+# Remove a file or directory
+git rm file_name
+git rm dir_name
+
+**Commit with a message**
+git commit -m "commit message"
+
+# Track and save all files with a message
+git commit -am "commit message"
+
+# Edit the previous commit message
+git commit --amend -m "new commit message"
+
+** 6. Stashing Changes **
+- Scenario
+- You are working on a branch and need to switch to fix a bug in another branch
+- Your current changes are not lost because you use stash
+
 git stash
-Stash including untracked files:
-bash
-Copy code
+
+# Stash staged, unstaged, and untracked files
 git stash -u
-Stash all files:
-bash
-Copy code
+
+# Stash everything
 git stash --all
-Apply and pop stash:
-bash
-Copy code
+
+# Apply and remove the stash
 git stash pop
-Apply stash without popping:
-bash
-Copy code
+
+# Apply without removing from stash
 git stash apply
-Drop stash:
-bash
-Copy code
+
+# Drop a specific stash
 git stash drop
-7. Branching
-List branches:
-bash
-Copy code
+
+** 7. Working with Branches ** 
+# List all local branches
 git branch
-git branch --list
-git branch -a  # Includes remote branches
-Create a new branch:
-bash
-Copy code
-git branch <new_branch>
-Switch to a branch:
-bash
-Copy code
-git checkout <branch>
-Create and switch to a new branch:
-bash
-Copy code
-git checkout -b <new_branch>
-Delete a branch safely:
-bash
-Copy code
-git branch -d <branch>
-Force delete a branch:
-bash
-Copy code
-git branch -D <branch>
-Rename the current branch:
-bash
-Copy code
-git branch -m <new_name>
-Push a branch to remote:
-bash
-Copy code
-git push <remote_repo> <branch>
-Delete a remote branch:
-bash
-Copy code
-git push <remote_repo> --delete <branch>
-Merge a branch into the main branch:
-bash
-Copy code
+
+# List all local and remote branches
+git branch -a
+
+** Creating and Deleting Branches**
+#Create a new branch
+git branch new_branch
+
+# Switch to a branch
+git checkout branch_name
+
+# Create and switch to a new branch
+git checkout -b new_branch
+
+# Delete a branch (safe delete)
+git branch -d branch_name
+
+# Force delete a branch
+git branch -D branch_name
+
+
+# Rename current branch
+git branch -m new_name
+
+# Push a branch to remote
+git push remote_repo branch_name
+
+# Delete a remote branch
+git push remote_repo --delete branch_name
+
+
+# Merge another branch into main
 git checkout main
-git merge <branch>
-8. Pulling Changes
-Fetch changes without applying:
-bash
-Copy code
-git fetch <remote>
-Fetch a specific branch:
-bash
-Copy code
-git fetch <remote> <branch>
-Fetch and merge changes:
-bash
-Copy code
-git pull <remote>
-9. Logging and Reviewing
-View all commits:
-bash
-Copy code
+git merge other_branch
+
+# Compare differences between two branches
+git diff branch_1 branch_2
+
+# Compare a specific file between two branches
+git diff branch_1 branch_2 file_name
+
+**8. Pulling Changes**
+## Fetch all commits and branches
+git fetch remote
+
+## Fetch a specific branch
+git fetch remote branch_name
+
+## Merge fetched changes
+git merge remote/branch_name
+
+## Fetch and merge simultaneously
+git pull remote
+
+**9. Logging and Reviewing Work**
+# View all commits
 git log
-View commit summaries:
-bash
-Copy code
+
+## View commits in a single line
 git log --oneline
-View commits with diff info:
-bash
-Copy code
+
+## View commits with statistics
 git log --stat
-View commits after a date:
-bash
-Copy code
+
+## View commits after a certain date
 git log --oneline --after="YYYY-MM-DD"
-View commits before a date:
-bash
-Copy code
+
+## View commits before a certain date
 git log --oneline --before="YYYY-MM-DD"
-10. Reverting and Resetting
-Undo latest commit but keep changes:
-bash
-Copy code
+
+# 10. Reversing Changes
+## Undo the latest commit but keep changes
 git reset HEAD~1
-Discard changes in the latest commit:
-bash
-Copy code
+
+## Discard all changes from the latest commit
 git reset --hard HEAD~1
-Revert a specific commit:
-bash
-Copy code
-git revert <commit_id>
-11. Comparing Changes
-Compare branches:
-bash
-Copy code
-git diff <branch_1> <branch_2>
-Compare a specific file between branches:
-bash
-Copy code
-git diff <branch_1> <branch_2> <file>
+
+# Reverting Commits
+## Revert a specific commit
+git revert commit_id
+
+
+
+# Notes
+- Always use git stash to safeguard uncommitted work before switching branches.
+- Use git log and git diff to review changes before merging or reverting.
+
+
+---
+
+4. **Save the file**:
+   - If you're using VS Code or similar, click **File** > **Save As** and save it as `gitLearning.md`.
+   - If you're using a simple text editor, make sure to save it with the `.md` extension.
+
+5. **Upload to GitHub**:
+   - Navigate to your GitHub repository.
+   - If the `Git` folder doesn't exist, create it.
+   - Upload the `gitLearning.md` file into the `Git` folder, or if you’re using the Git command line, commit and push it.
+
+
+
